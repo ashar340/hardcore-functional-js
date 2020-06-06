@@ -21,22 +21,27 @@ function getStudentsByName(students) {
             return students;
         })(students);
         return students;
-    }
-/* function sortStudentsByID() {
+	}
+	
+ //Task 2 took the impurity outside 
+ function getStudentsByID() { 
+	 students = students.slice();
+	 return sortStudentsByID(students);
+ }
+
+ // Adapter Function
+ function sortStudentsByID(students) {
 	// Don't modify this function
 	students.sort(function byID(s1,s2){
 		return s1.id - s2.id;
 	});
 	return students;
-} */
+}
 
 // *************************************
 
-// modify/move this function
-//function getStudentsByName() { return students; }
 
-// modify/move this function
-function getStudentsByID() { return students; }
+
 
 // *************************************
 
@@ -55,6 +60,7 @@ console.log(studentsTest2[3].id === 491);
 console.log(studentsTest2[4].id === 729);
 
 var studentsTest3 = students;
+console.log(students);
 console.log(studentsTest3[0].id === 260 && studentsTest3[0].name === "Kyle");
 console.log(studentsTest3[1].id === 729 && studentsTest3[1].name === "Susan");
 console.log(studentsTest3[2].id === 42 && studentsTest3[2].name === "Frank");
