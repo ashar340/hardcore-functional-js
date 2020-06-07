@@ -1,24 +1,30 @@
 "use strict";
+const R = require('ramda');
 
-function output(txt) {
-	console.log(txt);
-}
+//g(x) = f(x)
+//g=f
+var output = console.log.bind();
+//HOF
 
-function printIf(shouldPrintIt) {
+var printIf = R.when(isShortEnough(msg))(output);
+
+/* function printIf(shouldPrintIt) {
 	return function(msg) {
 		if (shouldPrintIt(msg)) {
 			output(msg);
 		}
 	};
-}
+} */
 
 function isShortEnough(str) {
 	return str.length <= 5;
 }
 
-function isLongEnough(str) {
+/* function isLongEnough(str) {
 	return !isShortEnough(str);
-}
+} */
+
+var isLongEnough = R.not(isShortEnough);
 
 var msg1 = "Hello";
 var msg2 = msg1 + " World";
