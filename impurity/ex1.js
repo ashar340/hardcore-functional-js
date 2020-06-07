@@ -24,13 +24,28 @@ function getStudentsByName(students) {
 	}
 	
  //Task 2 took the impurity outside 
- function getStudentsByID() { 
-	 students = students.slice();
-	 return sortStudentsByID(students);
+ function getStudentsByID(currStudents) { 
+     //Step 1 : Making copy of what's going to be modified
+    var origStudents = students.slice();
+
+     //Step 2 : Setting up the environment of what we want it to be (shallow copy in this case)
+
+     //this bubbled up to local and not global for sortStudentsByID()
+     students = currStudents;
+     
+     //Step 3 : Calling the impure function
+     var newStudents = sortStudentsByID();
+
+     //Step 4 :  Capturing the changed state
+     students = origStudents;
+
+     //Step 5 : Reassigning the changed to to my local var
+
+     return newStudents;
  }
 
  // Adapter Function
- function sortStudentsByID(students) {
+ function sortStudentsByID() {
 	// Don't modify this function
 	students.sort(function byID(s1,s2){
 		return s1.id - s2.id;
@@ -60,7 +75,7 @@ console.log(studentsTest2[3].id === 491);
 console.log(studentsTest2[4].id === 729);
 
 var studentsTest3 = students;
-console.log(students);
+
 console.log(studentsTest3[0].id === 260 && studentsTest3[0].name === "Kyle");
 console.log(studentsTest3[1].id === 729 && studentsTest3[1].name === "Susan");
 console.log(studentsTest3[2].id === 42 && studentsTest3[2].name === "Frank");
