@@ -53,13 +53,6 @@ function getStudentsByName(students) {
 	return students;
 }
 
-// *************************************
-
-
-
-
-// *************************************
-
 var studentsTest1 = getStudentsByName(students);
 console.log(studentsTest1[0].name === "Ally");
 console.log(studentsTest1[1].name === "Frank");
