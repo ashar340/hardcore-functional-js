@@ -5,13 +5,17 @@ function decrement(x) { return x - 1; }
 function double(x) { return x * 2; }
 function half(x) { return x / 2; }
 
-function compose() { return compose; }
-function pipe(...funcs) { return function piped(v) {
-    for (let fn of funcs) {
-        v = fn(v);
+function compose(...args) {
+     return pipe(...args.reverse()) 
     }
-    return v;
-    } 
+
+function pipe(...funcs) { 
+    return function piped(v) {
+        for (let fn of funcs) {
+            v = fn(v);
+        }
+      return v;
+    }
 }
 
 var f1 = compose(increment,decrement);
