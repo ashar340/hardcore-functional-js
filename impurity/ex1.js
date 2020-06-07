@@ -33,13 +33,12 @@ function getStudentsByName(students) {
      //this bubbled up to local and not global for sortStudentsByID()
      students = currStudents;
      
-     //Step 3 : Calling the impure function
-     var newStudents = sortStudentsByID();
-
+     //Step 3 : Calling the impure function and 
      //Step 4 :  Capturing the changed state
-     students = origStudents;
-
-     //Step 5 : Reassigning the changed to to my local var
+	 var newStudents = sortStudentsByID();
+	 
+	 //Step 5 : Reassigning the changed to to my local var
+	 students = origStudents;
 
      return newStudents;
  }
